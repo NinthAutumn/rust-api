@@ -1,9 +1,11 @@
 use actix_web::{web, App, HttpServer, Responder};
+use dotenv::dotenv;
 use listenfd::ListenFd;
 use std::io;
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
+    dotenv().ok();
     let mut listenfd = ListenFd::from_env();
     let mut server = HttpServer::new(|| App::new());
 
