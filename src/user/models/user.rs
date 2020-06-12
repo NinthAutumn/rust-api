@@ -1,7 +1,7 @@
 use tokio_pg_mapper_derive::PostgresMapper;
 use futures::Future;
 use super::{wallet, setting};
-
+use tokio_postgres::types::Timestamptz
 
 pub enum Gender{
     MALE,
@@ -32,6 +32,6 @@ pub struct User{
     wallet: dyn Future<wallet::Wallet>,
     roles: dyn Future,
     setting: dyn Future<setting::Setting>,
-    created_at: String, // Should be date?
-    updated_at: String, // Should be date?
+    created_at: Timestamptz, // Should be date?
+    updated_at: Timestamptz, // Should be date?
 }
