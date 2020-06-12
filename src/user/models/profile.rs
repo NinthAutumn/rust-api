@@ -1,11 +1,11 @@
-use tokio_pg_mapper_derive::Postgres_mapper;
+use tokio_pg_mapper_derive::PostgresMapper;
 use futures::Future;
 use super::user::User;
-#[derive(Serialize, Deserialize, PostgresMapper)]
+#[derive(PostgresMapper)]
 #[pg_mapper(table = "profiles")]
 pub struct Profile {
     user_id: i32,
-    user: dyn Future,
+    user: dyn Future<User>,
     first_name: String,
     last_name: String,
     age: i32,

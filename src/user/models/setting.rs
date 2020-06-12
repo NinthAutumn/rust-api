@@ -1,6 +1,6 @@
-use tokio_pg_mapper_derive::Postgres_mapper;
+use tokio_pg_mapper_derive::PostgresMapper;
 use super::user::User;
-#[derive(Serialize, Deserialize, PostgresMapper)]
+#[derive(PostgresMapper)]
 #[pg_mapper(table = "settings")]
 pub struct Setting {
     user_id: i32,

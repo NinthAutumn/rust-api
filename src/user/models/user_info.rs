@@ -1,7 +1,6 @@
-use tokio_pg_mapper_derive::Postgres_mapper;
-use futures::Future;
+use tokio_pg_mapper_derive::PostgresMapper;
 use super::user::User;
-#[derive(Serialize, Deserialize, PostgresMapper)]
+#[derive(PostgresMapper)]
 #[pg_mapper(table = "user_infos")]
 pub struct UserInfo {
     user_id: i32,

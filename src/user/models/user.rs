@@ -1,21 +1,22 @@
-use tokio_pg_mapper_derive::Postgres_mapper;
+use tokio_pg_mapper_derive::PostgresMapper;
 use futures::Future;
+use super::{wallet, setting};
 
 
-enum Gender{
+pub enum Gender{
     MALE,
     FEMALE,
     OTHER
 }
 
-enum Strategies {
+pub enum Strategies {
     FACEBOOK,
     GOOGLE,
     LOCAL,
     TWITTER
 }
 
-#[derive(Serialize, Deserialize, PostgresMapper)]
+#[derive(PostgresMapper)]
 #[pg_mapper(table = "users")]
 pub struct User{
     id: i32,
@@ -28,7 +29,7 @@ pub struct User{
     refresh_token: String,
     social_id: String,
     strategy: Strategies,
-    wallet: dyn Future,
+    wallet: dyn Future<wallet::Wallet>,
     roles: dyn Future,
-    setting: dyn Future
+    setting: dyn Future<setting::Setting>
 }
