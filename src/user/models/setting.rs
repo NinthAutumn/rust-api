@@ -9,5 +9,6 @@ pub struct Setting {
     chapter_font_family: String,
     main_theme: String,
     ranking_display: String,
-    update_display: String
+    update_display: String,
+    updated_at: String, // Should be date?
 }

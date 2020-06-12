@@ -18,5 +18,7 @@ pub struct PayoutMethod {
     paypal_email: String,
     birthday: String, // Should be date?
     platform: PlatformType,
-    phone: String
+    phone: String,
+    created_at: String, // Should be date?
+    updated_at: String, // Should be date?
 }

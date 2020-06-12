@@ -12,5 +12,6 @@ pub struct UserInfo {
     country_code: String,
     continent_code: String,
     phone_code: String,
-    timezone: String
+    timezone: String,
+    updated_at: String, // Should be date?
 }

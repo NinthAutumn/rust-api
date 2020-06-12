@@ -11,5 +11,6 @@ pub struct Profile {
     age: i32,
     birthday: String, // Should be date?
     bio: String,
-    banner: String
+    banner: String,
+    updated_at: String, // Should be date?
 }

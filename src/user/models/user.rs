@@ -31,5 +31,7 @@ pub struct User{
     strategy: Strategies,
     wallet: dyn Future<wallet::Wallet>,
     roles: dyn Future,
-    setting: dyn Future<setting::Setting>
+    setting: dyn Future<setting::Setting>,
+    created_at: String, // Should be date?
+    updated_at: String, // Should be date?
 }

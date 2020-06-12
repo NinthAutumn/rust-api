@@ -5,5 +5,6 @@ use super::user::User;
 pub struct UserDonationLinks {
     user_id: i32,
     user: User,
-    donation: Vec<String>
+    donation: Vec<String>,
+    updated_at: String, // Should be date?
 }
