@@ -1,24 +1,26 @@
-use tokio_pg_mapper_derive::PostgresMapper;
+use super::{setting, wallet};
 use futures::Future;
-use super::{wallet, setting};
-use tokio_postgres::types::Timestamptz
+use tokio_pg_mapper_derive::PostgresMapper;
+use tokio_postgres::types::{FromSql, Timestamp, ToSql};
 
-pub enum Gender{
+#[derive(Debug, ToSql, FromSql)]
+pub enum Gender {
     MALE,
     FEMALE,
-    OTHER
+    OTHER,
 }
 
+#[derive(Debug, ToSql, FromSql)]
 pub enum Strategies {
     FACEBOOK,
     GOOGLE,
     LOCAL,
-    TWITTER
+    TWITTER,
 }
 
 #[derive(PostgresMapper)]
 #[pg_mapper(table = "users")]
-pub struct User{
+pub struct User {
     id: i32,
     avatar: String,
     gender: Gender,
@@ -29,9 +31,6 @@ pub struct User{
     refresh_token: String,
     social_id: String,
     strategy: Strategies,
-    wallet: dyn Future<wallet::Wallet>,
-    roles: dyn Future,
-    setting: dyn Future<setting::Setting>,
-    created_at: Timestamptz, // Should be date?
-    updated_at: Timestamptz, // Should be date?
+    created_at: Timestamp, // Should be date?
+    updated_at: Timestamp, // Should be date?
 }

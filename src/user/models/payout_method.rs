@@ -1,18 +1,18 @@
-use tokio_pg_mapper_derive::PostgresMapper;
 use super::user::User;
 use futures::Future;
-#[derive(PostgresMapper)]
-#[pg_mapper(table = "payout_methods")]
+use tokio_pg_mapper_derive::PostgresMapper;
+
 pub enum PlatformType {
     PAYPAL,
     STRIPE,
-    MAIN
+    MAIN,
 }
 
+#[derive(PostgresMapper)]
+#[pg_mapper(table = "payout_methods")]
 pub struct PayoutMethod {
     id: i32,
     user_id: i32,
-    user: dyn Future<User>,
     first_name: String,
     last_name: String,
     paypal_email: String,
